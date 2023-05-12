@@ -56,9 +56,12 @@ int main()
     imprimirPersona();
 
     cambiarNombre();
-    cambiarEdad();
-    cambiarEmail();
+    imprimirPersona();
 
+    cambiarEdad();
+    imprimirPersona();
+
+    cambiarEmail();
     imprimirPersona();
 
     // Crear una persona y funciones para cambiar datos de personae imprimir los datos
