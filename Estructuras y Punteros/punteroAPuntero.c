@@ -2,14 +2,18 @@
 #include <malloc.h>
 #include "estructuras.h"
 
-
-
-Nodo modificarNodo(Nodo *miNodo, int nuevoValor)
+// pre: Lista a modificar, pre: Nodo a modificar, pre: nuevo valor.
+void modificarValorDeNodo(Nodo *miNodo, int posicion, int nuevoValor)
 {
+    for (int i = 0; i < posicion - 1; i++)
+    {
+        miNodo = miNodo->proximo;
+    }
+
     miNodo->valor = nuevoValor;
 }
 
-Nodo *agregarNodo(Nodo *lista, int valor)
+void agregarNodo(Nodo **lista, int valor)
 {
     // agregar el valor al nuevo nodo
     Nodo *nodoNuevo = malloc(sizeof(Nodo));
@@ -19,20 +23,19 @@ Nodo *agregarNodo(Nodo *lista, int valor)
     nodoNuevo->proximo = NULL;
 
     // asignar este nodo al proximo lugar de la lista
-    if (lista == NULL)
+    if (*lista == NULL)
     {
-        lista = nodoNuevo;
+        *lista = nodoNuevo;
     }
     else
     {
-        Nodo *cursor = lista;
+        Nodo *cursor = *lista;
         while (cursor->proximo != NULL)
         {
             cursor = cursor->proximo;
         }
         cursor->proximo = nodoNuevo;
     }
-    return lista;
 }
 
 int main()
@@ -42,27 +45,24 @@ int main()
 
     // lista.valor = 1;
 
-    lista = agregarNodo(lista, 1);
-    lista = agregarNodo(lista, 8);
-    lista = agregarNodo(lista, 3);
-    lista = agregarNodo(lista, 5);
+    agregarNodo(&lista, 1);
+    agregarNodo(&lista, 8);
+    agregarNodo(&lista, 3);
+    agregarNodo(&lista, 5);
 
     printf("%d\n", lista->valor);
     printf("%d\n", lista->proximo->valor);
     printf("%d\n", lista->proximo->proximo->valor);
     printf("%d\n", lista->proximo->proximo->proximo->valor);
 
-    // modificarNodo(&primerNodo);
+    modificarValorDeNodo(lista, 2, 4);
 
-    /*int x = 1;
-    int *point = &x;
+    modificarValorDeNodo(lista, 4, 10);
 
-    printf("%p\n", &x);
-    printf("%p\n", point);
-
-    printf("%d", sizeof(point));
-
-    */
+    printf("%d\n", lista->valor);
+    printf("%d\n", lista->proximo->valor);
+    printf("%d\n", lista->proximo->proximo->valor);
+    printf("%d\n", lista->proximo->proximo->proximo->valor);
 
     return 0;
 }

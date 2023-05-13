@@ -6,7 +6,8 @@ typedef struct Cliente
 
 } persona;
 
-typedef struct Nodos{
+typedef struct structNodo
+{
     int valor;
-    struct Nodos;
-} nodo;
+    struct structNodo *proximo;
+} Nodo;
