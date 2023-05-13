@@ -5,3 +5,8 @@ typedef struct Cliente
     char email[100];
 
 } persona;
+
+typedef struct Nodos{
+    int valor;
+    struct Nodos;
+} nodo;
