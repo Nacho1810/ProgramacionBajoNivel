@@ -22,27 +22,30 @@ Fecha de entrega (parte 1 + parte 2): 2023-05-13
 #include "lista.h"
 #include "funcionesDeLista.h"
 
+// pre: lista, pre:siguiente elemento a agregar
+
+void eliminarElemento(Lista *miLista, int posición){
+
+}
+
 int main()
 {
-
     Lista *miLista = crearLista();
+    agregarElementoPuntero(&miLista, 1);
+    agregarElementoPuntero(&miLista, 2);
+    agregarElementoPuntero(&miLista, 3);
+    agregarElementoPuntero(&miLista, 4);
+    agregarElementoPuntero(&miLista, 7);
+    agregarElementoPuntero(&miLista, 11);
 
-    miLista = agregarElemento(miLista, 1);
-    miLista = agregarElemento(miLista, 2);
-    miLista = agregarElemento(miLista, 3);
-    miLista = agregarElemento(miLista, 3);
-    miLista = agregarElemento(miLista, 3);
-    miLista = agregarElemento(miLista, 7);
-
-    printf("La lista tiene: %d\n", obtenerLargoDeLista(miLista));
+    printf("La lista tiene %d elementos\n", obtenerLargoDeLista(miLista));
 
     imprimirLista(miLista);
 
-    printf("El elemento 6 es: %d\n", obtenerElementoNDeLista(miLista, 6));
-
-    // printf("%d\n", miLista->valor);
-    // printf("%d\n", miLista->siguienteElemento->valor);
-    // printf("%d\n", miLista->siguienteElemento->siguienteElemento->valor);
+    printf("El primer elemento es: %d\n", obtenerElementoEnPosiciónN(miLista, 1));
+    printf("El elemento nº 6 es: %d\n", obtenerElementoEnPosiciónN(miLista, 6));
+    printf("El elemento 11 es el nº %d\n", obtenerPosicionDeElementoN(miLista, 11));
+    
 
     return 0;
 }

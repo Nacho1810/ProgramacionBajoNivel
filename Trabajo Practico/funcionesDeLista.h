@@ -10,9 +10,39 @@ Lista *crearLista()
 
     return nuevaLista;
 }
-// cual lista y que elemento agregar
-Lista *agregarElemento(Lista *miLista, int valorAgregar)
+
+// pre: lista, pre:siguiente elemento a agregar
+void agregarElementoPuntero(Lista **miLista, int valorAgregar)
 {
+
+    Lista *nuevoElemento = malloc(sizeof(Lista));
+    nuevoElemento->valor = valorAgregar;
+    nuevoElemento->siguienteElemento = NULL;
+    nuevoElemento->posicionDeElemento = 1;
+
+    // asignarlo al proximo valor de la lista
+    if (*miLista == NULL)
+    {
+        // si no hay ningun elemento
+        *miLista = nuevoElemento;
+    }
+    else
+    {
+        // buscar el proximo elemento null
+        Lista *cursor = *miLista;
+        int posic = 2;
+        while (cursor->siguienteElemento != NULL)
+        {
+            posic++;
+            cursor = cursor->siguienteElemento;
+        }
+        cursor->siguienteElemento = nuevoElemento;
+        cursor->siguienteElemento->posicionDeElemento = posic;
+    }
+}
+/*
+ Lista *agregarElemento(Lista *miLista, int valorAgregar)
+ {
 
     Lista *nuevoElemento = malloc(sizeof(Lista));
     nuevoElemento->valor = valorAgregar;
@@ -35,7 +65,8 @@ Lista *agregarElemento(Lista *miLista, int valorAgregar)
         cursor->siguienteElemento = nuevoElemento;
     }
     return miLista;
-}
+ }
+*/
 
 int obtenerLargoDeLista(Lista *miLista)
 {
@@ -52,17 +83,29 @@ int obtenerLargoDeLista(Lista *miLista)
 }
 imprimirLista(Lista *miLista)
 {
+    printf("Impresión de elementos:\n");
     Lista *cursor = miLista;
     int i = 1;
     while (cursor != NULL)
     {
-        printf("Elemento nº %d: %d\n", i, cursor->valor);
+        printf("Elemento nº %d: %d\n", cursor->posicionDeElemento, cursor->valor);
         i++;
         cursor = cursor->siguienteElemento;
     }
 }
 
-obtenerElementoNDeLista(Lista *miLista, int posicionN)
+int obtenerPosicionDeElementoN(Lista *miLista, int elemento){
+    
+    Lista *cursor = miLista;
+    while(cursor->valor != elemento){
+        
+        cursor = cursor->siguienteElemento;
+    }
+    return cursor->posicionDeElemento;
+    
+}
+
+obtenerElementoEnPosiciónN(Lista *miLista, int posicionN)
 {
     int elemento = -1;
 

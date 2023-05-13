@@ -3,6 +3,7 @@
 
 typedef struct estructuraLista {
     int valor;
+    int posicionDeElemento;
     struct estructuraLista *siguienteElemento;
 
 } Lista;
