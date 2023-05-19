@@ -35,6 +35,9 @@ Nodo *agregarNodo(Nodo *lista, int valor)
     return lista;
 }
 
+
+//La memoria de main, siempre reserva la información mientras esta 
+// utilizando
 int main()
 {
 
@@ -51,6 +54,13 @@ int main()
     printf("%d\n", lista->proximo->valor);
     printf("%d\n", lista->proximo->proximo->valor);
     printf("%d\n", lista->proximo->proximo->proximo->valor);
+
+    char array[] = "holaSoyNacho";
+    char* p = array;
+
+    
+    printf("%lu", sizeof(array));
+    printf("%lu", sizeof(p));
 
     // modificarNodo(&primerNodo);
 

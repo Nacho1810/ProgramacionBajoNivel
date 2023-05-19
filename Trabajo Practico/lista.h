@@ -3,7 +3,7 @@
 
 typedef struct estructuraLista {
     int valor;
-    int posicionDeElemento;
+    //int posicionDeElemento; no quiero guardar el numero de la posición ahora
     struct estructuraLista *siguienteElemento;
 
 } Lista;
