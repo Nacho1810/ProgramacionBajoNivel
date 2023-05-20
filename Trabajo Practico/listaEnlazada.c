@@ -22,25 +22,7 @@ Fecha de entrega (parte 1 + parte 2): 2023-05-13
 #include "lista.h"
 #include "funcionesDeLista.h"
 
-// pre: lista, pre:siguiente elemento a agregar
-// En proceso
 
-void insertarElemento(Lista **miLista, int posicion, int valor)
-{
-
-    Lista *nuevoElemento = malloc(sizeof(Lista));
-    nuevoElemento->valor = valor;
-    nuevoElemento->siguienteElemento = NULL;
-
-    Lista *cursor = *miLista;
-    for (int i = 0; i < posicion; i++)
-    {
-        cursor = cursor->siguienteElemento;
-    }
-    cursor->siguienteElemento = nuevoElemento;
-
-    // nuevoElemento->siguienteElemento = ;
-}
 
 
 
@@ -50,13 +32,13 @@ int main()
     // pruebas
 
     Lista *miLista = crearLista();
-    agregarElementoPuntero(&miLista, 1);
-    agregarElementoPuntero(&miLista, 2);
-    agregarElementoPuntero(&miLista, 3);
-    agregarElementoPuntero(&miLista, 4);
-    agregarElementoPuntero(&miLista, 5);
-    agregarElementoPuntero(&miLista, 6);
-    agregarElementoPuntero(&miLista, 7);
+    agregarElementoFinal(&miLista, 1);
+    agregarElementoFinal(&miLista, 2);
+    agregarElementoFinal(&miLista, 3);
+    agregarElementoFinal(&miLista, 4);
+    agregarElementoFinal(&miLista, 5);
+    agregarElementoFinal(&miLista, 6);
+    agregarElementoFinal(&miLista, 7);
 
     printf("La lista tiene %d elementos\n", obtenerLargoDeLista(miLista));
     imprimirLista(miLista);
@@ -65,13 +47,15 @@ int main()
 
     imprimirLista(miLista);
 
-    
-
     eliminarNodo(&miLista, 5);
 
     imprimirLista(miLista);
 
     eliminarNodo(&miLista, 1);
+
+    imprimirLista(miLista);
+
+    insertarElementoOrdenado(&miLista, 5);
 
     imprimirLista(miLista);
 

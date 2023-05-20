@@ -11,16 +11,14 @@ Lista *crearLista()
     return nuevaLista;
 }
 
-
-
 // pre: lista, pre:siguiente elemento a agregar
-void agregarElementoPuntero(Lista **miLista, int valorAgregar)
+void agregarElementoFinal(Lista **miLista, int valorAgregar)
 {
 
     Lista *nuevoElemento = malloc(sizeof(Lista));
     nuevoElemento->valor = valorAgregar;
     nuevoElemento->siguienteElemento = NULL;
-    //nuevoElemento->posicionDeElemento = 1;
+    // nuevoElemento->posicionDeElemento = 1;
 
     // asignarlo al proximo valor de la lista
     if (*miLista == NULL)
@@ -55,7 +53,7 @@ int obtenerLargoDeLista(Lista *miLista)
 }
 void imprimirLista(Lista *miLista)
 {
-    printf("Impresión de elementos:\n");
+    printf("\nImpresión de elementos:\n \n");
     Lista *cursor = miLista;
     int pos = 1;
     while (cursor != NULL)
@@ -120,15 +118,49 @@ void eliminarNodo(Lista **miLista, int valor)
     {
         printf("El elemento a eliminar no se encuentra en la lista\n");
     }
-    else {
-    if (nodoAnterior == NULL) // Nodo a eliminar: primer elemento
+    else
     {
-        *miLista = cursor->siguienteElemento;
-        
-    }else
-    { // (Cualquier otro caso) El nodo existe y se encuentra
-        nodoAnterior->siguienteElemento = cursor->siguienteElemento;
-    }
+        if (nodoAnterior == NULL) // Nodo a eliminar: primer elemento
+        {
+            *miLista = cursor->siguienteElemento;
+        }
+        else
+        { // (Cualquier otro caso) El nodo existe y se encuentra
+            nodoAnterior->siguienteElemento = cursor->siguienteElemento;
+        }
         free(cursor);
     }
+}
+
+// pre: lista, pre:siguiente elemento a agregar
+// En proceso
+void insertarElementoOrdenado(Lista **miLista, int valor)
+{
+
+    Lista *nuevoElemento = malloc(sizeof(Lista));
+    nuevoElemento->valor = valor;
+    nuevoElemento->siguienteElemento = NULL;
+
+    Lista *cursor = *miLista;
+    Lista *nodoAnterior = NULL;
+
+    if (*miLista == NULL )
+    {
+        *miLista = nuevoElemento;
+    }
+    if (cursor->valor > valor)
+    {
+        nuevoElemento->siguienteElemento = *miLista;
+        *miLista = nuevoElemento;
+    }
+    while (cursor != NULL && valor <= cursor->valor)
+    {
+        nodoAnterior = cursor;
+        cursor = cursor->siguienteElemento;
+    }
+
+    nuevoElemento->siguienteElemento = nodoAnterior->siguienteElemento;
+    nodoAnterior->siguienteElemento = nuevoElemento;
+
+    // nuevoElemento->siguienteElemento = ;
 }
