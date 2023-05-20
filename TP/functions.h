@@ -9,6 +9,7 @@ Lista *nuevaLista()
     return miLista;
 }
 
+
 Lista *crearNodo(int valor)
 {
     Lista *nodo = malloc(sizeof(Lista));
