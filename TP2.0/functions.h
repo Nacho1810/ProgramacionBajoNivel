@@ -64,7 +64,7 @@ void agregElementoOrdenado(Lista **miLista, int valor)
             anterior = cursor;
             cursor = cursor->siguiente;
         }
-        if (anterior == NULL || *miLista == NULL)
+        if (anterior == NULL)
         {
             agregNodoPrincip(miLista, valor);
         }
