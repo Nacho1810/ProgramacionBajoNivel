@@ -78,6 +78,21 @@ void agregElementoOrdenado(Lista **miLista, int valor)
     }
 }
 
+// Obtiene largo de lista
+int obtLargoDeLista(Lista *miLista)
+{
+    int cantElementos = 0;
+
+    Lista *cursor = miLista;
+    while (cursor != NULL)
+    {
+        cantElementos++;
+        cursor = cursor->siguiente;
+    }
+
+    return cantElementos;
+}
+
 // Elimina el nodo según el valor
 void eliminarNodo(Lista **cabeza, int valor)
 {
@@ -121,26 +136,13 @@ void imprimirLista(Lista *miLista)
     int i = 1;
     while (cursor != NULL)
     {
-        printf("Elemento nº %d: %d\n", i, cursor->valor);
+        printf("Elemento n %d: %d\n", i, cursor->valor);
         i++;
         cursor = cursor->siguiente;
     }
 }
 
-// Obtiene largo de lista
-int obtLargoDeLista(Lista *miLista)
-{
-    int cantElementos = 0;
 
-    Lista *cursor = miLista;
-    while (cursor != NULL)
-    {
-        cantElementos++;
-        cursor = cursor->siguiente;
-    }
-
-    return cantElementos;
-}
 
 // Obtener elemento en posición N de la Lista
 int obtElemento(Lista *miLista, int pos)

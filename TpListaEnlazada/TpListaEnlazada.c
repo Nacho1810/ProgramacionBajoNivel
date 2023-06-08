@@ -23,7 +23,7 @@ Fecha de entrega (parte 1 + parte 2): 2023-05-13
 
 int main()
 {
-
+    
     Lista *miLista = nuevaLista();
     agregNodoFinal(&miLista, 1);
     agregNodoFinal(&miLista, 2);
